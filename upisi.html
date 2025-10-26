@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upisi - PK Poreč</title>
+    
+    <link rel="icon" type="image/png" href="/assets/images/fav_ico.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d051f9a19b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="container content-section" data-header-theme="dark">
+            <h2 class="section-title reveal">Online Upisi</h2>
+            <p class="text-center reveal">Zainteresirani ste za upis? Ispunite obrazac ispod i kontaktirat ćemo vas u najkraćem roku.</p>
+            <div class="form-wrapper reveal">
+
+                <form name="upisi" method="POST" action="/hvala" data-netlify="true" netlify-honeypot="bot-field" class="upis-forma">
+                    <input type="hidden" name="form-name" value="upisi" />
+                    <p style="display:none;">
+                      <label>Ne ispunjavaj ovo: <input name="bot-field" /></label>
+                    </p>
+                
+                    <input type="text" name="Ime i prezime djeteta" placeholder="Ime i prezime djeteta" required>
+                    <input type="text" name="Adresa" placeholder="Adresa stanovanja" required>
+                    
+                    <!-- 
+                      ISPRAVAK JE OVDJE:
+                      Promijenili smo type="text" u type="date".
+                      Ovo automatski stvara kalendar bez potrebe za JavaScriptom.
+                      Također smo dodali labelu radi bolje pristupačnosti.
+                    -->
+                    <label for="datum-rodenja" style="font-weight: 300; font-size: 0.9em; color: #777; padding-left: 5px;">Datum rođenja:</label>
+                    <input type="date" id="datum-rodenja" name="Datum rođenja" required>
+                           
+                    <input type="tel" name="OIB" placeholder="OIB djeteta" required pattern="[0-9]{11}" maxlength="11" inputmode="numeric" title="OIB mora sadržavati točno 11 brojki.">
+                           
+                    <input type="tel" name="Mobitel" placeholder="Vaš kontakt mobitel" required pattern="[0-9+]+" inputmode="numeric" title="Unesite ispravan broj telefona (samo brojevi i znak '+').">
+                           
+                    <input type="text" name="Ime i prezime roditelja" placeholder="Ime i prezime roditelja/skrbnika" required>
+                    
+                    <div class="consent-checkbox">
+                        <input type="checkbox" id="privola" name="privola" value="prihvaceno" required>
+                        <label for="privola">Pročitao/la sam i slažem se s <a href="/politika-privatnosti.html" target="_blank">Politikom privatnosti</a>.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary">Pošalji prijavu</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+---
+layout: null
+pagination:
+  data: collections.novosti
+  size: 9
+  alias: novostiNaStranici
+---
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novosti - PK Poreč</title>
+
+    <link rel="icon" type="image/png" href="/assets/images/fav_ico.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d051f9a19b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <section class="container content-section" data-header-theme="dark">
+            <h2 class="section-title reveal">Sve Novosti</h2>
+            <div class="novosti-grid">
+                {% for vijest in novostiNaStranici %}
+                <div class="novost-card reveal">
+                    {% if vijest.data.cover %}
+                        <!-- 
+                          FINALNI ISPRAVAK JE OVDJE: Maknuta je kosa crta (/) prije {{ vijest.data.cover }}
+                          jer putanja iz CMS-a već sadrži kosu crtu.
+                        -->
+                        <img src="{{ vijest.data.cover }}" alt="Slika za {{ vijest.data.title }}">
+                    {% else %}
+                        <img src="/assets/images/slika1.jpg" alt="Zadana slika">
+                    {% endif %}
+                    <div class="novost-content">
+                        <h4>{{ vijest.data.title }}</h4>
+                        {% if vijest.data.summary %}
+                            <p class="summary">{{ vijest.data.summary }}</p>
+                        {% endif %}
+                        <a href="{{ vijest.url | url }}" class="btn btn-dark">Pročitaj više</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

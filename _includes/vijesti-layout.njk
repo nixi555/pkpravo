@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - PK Poreč</title>
+
+    <link rel="icon" type="image/png" href="/assets/images/fav_ico.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d051f9a19b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <section class="container content-section" data-header-theme="dark">
+            <article>
+                <h1 class="post-title">{{ title }}</h1>
+                
+                <p class="post-meta text-center">Objavljeno: {{ post_date | date('dd.MM.yyyy') }}</p>
+                
+                {% if cover %}
+                    <!-- 
+                      ISPRAVAK JE OVDJE: Maknuta je kosa crta (/) prije {{ cover }}
+                      jer putanja iz CMS-a već sadrži kosu crtu.
+                    -->
+                    <img src="{{ cover }}" alt="{{ title }}" class="post-image">
+                {% endif %}
+                <div class="post-content">
+                    {{ content | safe }}
+                </div>
+            </article>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

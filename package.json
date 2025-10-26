@@ -1,0 +1,17 @@
+{
+  "name": "pk-porec-web",
+  "version": "1.0.0",
+  "description": "Web stranica Plivačkog kluba Poreč",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "luxon": "^3.4.4"
+  }
+}

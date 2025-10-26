@@ -1,0 +1,36 @@
+# ===============================================
+#   Netlify Konfiguracija za Plivački Klub Poreč
+# ===============================================
+
+# 1. BUILD POSTAVKE
+# Govori Netlifyju kako da izgradi stranicu.
+# command -> Naredba koju treba pokrenuti (Eleventy).
+# publish -> Mapa koju treba objaviti nakon što naredba završi (_site).
+[build]
+  command = "npm install && npx @11ty/eleventy"
+  publish = "_site"
+
+# 2. REDIRECTS (PREUSMJERAVANJA)
+# Ovo je ključno za ispravan rad CMS-a (/admin/).
+# Sprječava "Page Not Found" greške i redirect petlje.
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# 3. HEADERS (ZAGLAVLJA)
+# Postavlja specifična HTTP zaglavlja za datoteke.
+
+# Onemogućuje cache za CMS, kako biste uvijek vidjeli najnoviju verziju.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"
+
+# Dodatni sigurnosni headeri za cijelu stranicu (dobra praksa).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "same-origin"

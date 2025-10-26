@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+locale: hr
+
+slug:
+  encoding: "unicode"
+  clean_accents: true
+
+collections:
+  - name: "novosti"
+    label: "Novosti"
+    label_singular: "Vijest"
+    folder: "content/novosti"
+    create: true
+    format: "frontmatter"
+    extension: "md"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "vijesti-layout.njk" }
+      - { label: "Naslov", name: "title", widget: "string" }
+      - { label: "Datum", name: "post_date", widget: "datetime", time_format: "HH:mm", date_format: "DD.MM.YYYY.", format: "YYYY-MM-DDTHH:mm:ssZ", picker_utc: false }
+      - { label: "Naslovna slika", name: "cover", widget: "image", required: false }
+      - { label: "Sažetak (za prikaz na listi novosti)", name: "summary", widget: "text", required: false }
+      - { label: "Sadržaj", name: "body", widget: "markdown" }
+
+  - name: "postavke"
+    label: "Glavne Postavke"
+    files:
+      - label: "Tjedni Raspored Treninga"
+        name: "raspored"
+        file: "_data/schedule.json"
+        fields:
+          - label: "Grupe"
+            name: "grupe"
+            widget: "list"
+            fields:
+              - { label: "Naziv Grupe", name: "naziv", widget: "string" }
+              - { label: "Ponedjeljak", name: "pon", widget: "string", default: "-", required: false }
+              - { label: "Utorak", name: "uto", widget: "string", default: "-", required: false }
+              - { label: "Srijeda", name: "sri", widget: "string", default: "-", required: false }
+              - { label: "Četvrtak", name: "cet", widget: "string", default: "-", required: false }
+              - { label: "Petak", name: "pet", widget: "string", default: "-", required: false }

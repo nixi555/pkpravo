@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PK Poreč - Naslovna</title>
+
+    <link rel="icon" type="image/png" href="/assets/images/fav_ico.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d051f9a19b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section id="hero" data-header-theme="light" style="background-image: url('/assets/images/hero-slika.jpg');">
+            <div class="bubbles">
+                <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="fade-in">
+                    Plivački Klub 
+                    <span class="yellow-text word-porec">Poreč</span>
+                </h1>
+                <p class="fade-in">Mjesto gdje se stvaraju pobjednici i rađaju prijateljstva.</p>
+                <a href="/upisi.html" class="btn btn-primary fade-in">Postani član!</a>
+            </div>
+
+            <div class="hero-background-animations">
+                <div class="waves">
+                    <svg class="parallax" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                        <rect width="100%" height="100%" fill="#1F2C4B"></rect>
+                        <defs>
+                            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                        </defs>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.12)"/>
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.18)"/>
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.28)"/>
+                        <!-- ISPRAVAK JE OVDJE: vraćena bijela boja vala -->
+                        <use href="#gentle-wave" x="48" y="7" fill="rgba(255,255,255,0.38)"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="container content-section" data-header-theme="dark">
+            <h2 class="section-title reveal">Dobrodošli</h2>
+            <p class="text-center reveal" style="max-width: 800px; margin-left: auto; margin-right: auto;">Plivački klub Poreč je mjesto okupljanja za sve zaljubljenike u plivanje. Nudimo programe od škole plivanja za najmlađe do treninga za vrhunske natjecatelje. Pridružite nam se i postanite dio naše sportske obitelji!</p>
+        </section>
+
+        <section class="content-section" style="background-color: var(--light-bg-color);" data-header-theme="dark">
+            <div class="container">
+                <h2 class="section-title reveal">Izdvojene Novosti</h2>
+                <div class="novosti-grid">
+                     <div class="novost-card reveal">
+                        <img src="/assets/images/slika1.jpg" alt="Slika s natjecanja">
+                        <div class="novost-content">
+                            <h4>Uspjeh na regionalnom prvenstvu!</h4>
+                            <p class="summary">Naši plivači ostvarili su sjajne rezultate na posljednjem natjecanju u Rijeci, osvojivši 5 zlatnih medalja...</p>
+                            <a href="#" class="btn btn-dark">Pročitaj više</a>
+                        </div>
+                    </div>
+                    <div class="novost-card reveal">
+                        <img src="/assets/images/slika2.jpg" alt="Slika upisa">
+                        <div class="novost-content">
+                            <h4>Upisi u ljetnu školu plivanja</h4>
+                            <p class="summary">Započeli su upisi u našu popularnu ljetnu školu plivanja za djecu. Požurite, broj mjesta je ograničen!</p>
+                             <a href="/upisi.html" class="btn btn-dark">Saznaj više</a>
+                        </div>
+                    </div>
+                    <div class="novost-card reveal">
+                        <img src="/assets/images/slika3.jpg" alt="Slika s druženja kluba">
+                        <div class="novost-content">
+                            <h4>Klupsko druženje za kraj sezone</h4>
+                            <p class="summary">Pozivamo sve članove i roditelje na tradicionalno druženje i roštilj povodom završetka uspješne sezone.</p>
+                            <a href="#" class="btn btn-dark">Pročitaj više</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 40px;"><a href="/novosti/" class="btn btn-primary">Sve novosti</a></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>
