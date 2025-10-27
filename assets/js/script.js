@@ -1,22 +1,34 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     
-    // Funkcija za učitavanje headera i footera
-    const loadPartials = async () => {
+    // Optimizirana funkcija za učitavanje headera i footera
+    const loadPartials = () => {
         const headerPlaceholder = document.getElementById('header-placeholder');
         const footerPlaceholder = document.getElementById('footer-placeholder');
-        try {
-            // JEDINA IZMJENA JE OVDJE: Dodane su kose crte (/)
-            const [headerRes, footerRes] = await Promise.all([
-                fetch('/_includes/header.html'),
-                fetch('/_includes/footer.html')
-            ]);
-            if (headerPlaceholder && headerRes.ok) headerPlaceholder.outerHTML = await headerRes.text();
-            if (footerPlaceholder && footerRes.ok) footerPlaceholder.outerHTML = await footerRes.text();
-        } catch (error) {
-            console.error('Greška pri učitavanju djelomičnih datoteka:', error);
-        }
-    };
 
+        // Ako elementi ne postoje na stranici, odmah pokreni glavni kod
+        if (!headerPlaceholder || !footerPlaceholder) {
+            initializePage();
+            return;
+        }
+        
+        // Koristimo Promise.all da se oba dijela učitavaju ISTOVREMENO, što je brže
+        Promise.all([
+            fetch('/_includes/header.html').then(response => response.ok ? response.text() : ''),
+            fetch('/_includes/footer.html').then(response => response.ok ? response.text() : '')
+        ])
+        .then(([headerHtml, footerHtml]) => {
+            // Zamijeni placeholdere s učitanim HTML-om
+            headerPlaceholder.outerHTML = headerHtml;
+            footerPlaceholder.outerHTML = footerHtml;
+        })
+        .catch(error => console.error('Greška pri učitavanju headera/footera:', error))
+        .finally(() => {
+            // BILO DA JE USPJELO ILI NE, UVIJEK POKRENI GLAVNI KOD NAKON OVOGA
+            // Ovo osigurava da ostatak stranice (meni, animacije) uvijek radi.
+            initializePage();
+        });
+    };
+    
     // Glavna funkcija koja pokreće sav ostali kod NAKON što se učitaju header i footer
     const initializePage = () => {
         // FUNKCIONALAN MOBILNI MENI
@@ -31,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // DINAMIČKI HEADER
         const header = document.querySelector('header');
-        if(header) {
+        if (header) {
             let lastScrollY = window.scrollY;
             const heroSection = document.querySelector('#hero');
             const headerObserver = new IntersectionObserver((entries) => {
@@ -78,10 +90,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
         document.querySelectorAll('.reveal, .section-title').forEach(el => revealObserver.observe(el));
         
-        // --- UČITAVANJE RASPOREDA (ISPRAVLJENA VERZIJA) ---
+        // UČITAVANJE RASPOREDA
         const rasporedContainer = document.getElementById('raspored-container');
         if (rasporedContainer) {
-             fetch('/_data/schedule.json') // I OVDJE JE DODANA KOSA CRTA (/)
+             fetch('/_data/schedule.json')
             .then(res => res.ok ? res.json() : Promise.reject('Greška pri dohvaćanju rasporeda'))
             .then(data => {
                 const container = rasporedContainer;
@@ -115,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
 
-        // === COOKIE BANNER LOGIKA ===
+        // COOKIE BANNER LOGIKA
         const cookieBanner = document.getElementById('cookie-banner');
         const acceptAllBtn = document.getElementById('cookie-accept-all');
         const settingsBtn = document.getElementById('cookie-settings-btn');
@@ -177,13 +189,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             initAnalytics();
         }
 
-        // KOD ZA FORMATIRANJE DATUMA
-        const dateInput = document.querySelector('input[name="Datum rođenja"]');
-        if (dateInput) {
-            // ... (ostatak koda za datum ostaje isti) ...
+        // KOD ZA HTML5 KALENDAR (iako ga više ne trebamo aktivno s type="date")
+        // Ostavljamo za slučaj da se predomislite - ne smeta
+        const dateInput = document.querySelector('input[type="date"]');
+        if (dateInput && dateInput.type !== 'date') {
+            // Fallback za stare preglednike ako zatreba...
         }
     };
 
-    await loadPartials();
-    initializePage();
+    // Pokreni učitavanje djelomičnih datoteka
+    loadPartials();
 });
