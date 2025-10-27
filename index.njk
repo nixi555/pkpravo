@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="hr">
 <head>
@@ -30,7 +33,7 @@
 
             <div class="hero-background-animations">
                 <div class="waves">
-                    <svg class="parallax" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <svg class="parallax" xmlns="http://www.w.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
                         <rect width="100%" height="100%" fill="#1F2C4B"></rect>
                         <defs>
                             <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
@@ -38,7 +41,6 @@
                         <use href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.12)"/>
                         <use href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.18)"/>
                         <use href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.28)"/>
-                        <!-- ISPRAVAK JE OVDJE: vraćena bijela boja vala -->
                         <use href="#gentle-wave" x="48" y="7" fill="rgba(255,255,255,0.38)"/>
                     </svg>
                 </div>
@@ -54,30 +56,29 @@
             <div class="container">
                 <h2 class="section-title reveal">Izdvojene Novosti</h2>
                 <div class="novosti-grid">
-                     <div class="novost-card reveal">
-                        <img src="/assets/images/slika1.jpg" alt="Slika s natjecanja">
-                        <div class="novost-content">
-                            <h4>Uspjeh na regionalnom prvenstvu!</h4>
-                            <p class="summary">Naši plivači ostvarili su sjajne rezultate na posljednjem natjecanju u Rijeci, osvojivši 5 zlatnih medalja...</p>
-                            <a href="#" class="btn btn-dark">Pročitaj više</a>
-                        </div>
-                    </div>
+                    
+                    <!-- 
+                      DINAMIČKI DIO POČINJE OVDJE 
+                      Ovaj kod će automatski uzeti 3 najnovije vijesti iz kolekcije.
+                    -->
+                    {% for vijest in collections.novosti | limit(3) %}
                     <div class="novost-card reveal">
-                        <img src="/assets/images/slika2.jpg" alt="Slika upisa">
+                        {% if vijest.data.cover %}
+                            <img src="{{ vijest.data.cover }}" alt="Slika za {{ vijest.data.title }}">
+                        {% else %}
+                            <img src="/assets/images/slika1.jpg" alt="Zadana slika">
+                        {% endif %}
                         <div class="novost-content">
-                            <h4>Upisi u ljetnu školu plivanja</h4>
-                            <p class="summary">Započeli su upisi u našu popularnu ljetnu školu plivanja za djecu. Požurite, broj mjesta je ograničen!</p>
-                             <a href="/upisi.html" class="btn btn-dark">Saznaj više</a>
+                            <h4>{{ vijest.data.title }}</h4>
+                            {% if vijest.data.summary %}
+                                <p class="summary">{{ vijest.data.summary }}</p>
+                            {% endif %}
+                            <a href="{{ vijest.url | url }}" class="btn btn-dark">Pročitaj više</a>
                         </div>
                     </div>
-                    <div class="novost-card reveal">
-                        <img src="/assets/images/slika3.jpg" alt="Slika s druženja kluba">
-                        <div class="novost-content">
-                            <h4>Klupsko druženje za kraj sezone</h4>
-                            <p class="summary">Pozivamo sve članove i roditelje na tradicionalno druženje i roštilj povodom završetka uspješne sezone.</p>
-                            <a href="#" class="btn btn-dark">Pročitaj više</a>
-                        </div>
-                    </div>
+                    {% endfor %}
+                    <!-- DINAMIČKI DIO ZAVRŠAVA OVDJE -->
+
                 </div>
                 <div class="text-center" style="margin-top: 40px;"><a href="/novosti/" class="btn btn-primary">Sve novosti</a></div>
             </div>
