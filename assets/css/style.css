@@ -177,7 +177,7 @@ header.scrolled .hamburger span { background-color: var(--primary-color) !import
   overflow-x:auto;
   -webkit-overflow-scrolling:touch;
   border-radius:8px;
-  box-shadow:0 4px 15px rgba(0,0,0,.05);
+  box-shadow:none;
 }
 table {width:100%;border-collapse:collapse}
 table td,table th {
@@ -709,3 +709,4 @@ input:checked + .slider:before { transform: translateX(22px); }
     .cookie-buttons.settings-buttons { margin-top: 25px; }
 
 }
+
