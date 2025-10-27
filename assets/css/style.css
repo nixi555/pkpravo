@@ -103,9 +103,9 @@ header.scrolled .hamburger span { background-color: var(--primary-color) !import
 @keyframes move-wave { from { transform: translate3d(-90px, 0, 0); } to { transform: translate3d(85px, 0, 0); } }
 
 /* BUBBLE ANIMACIJE */
-.bubbles { position: absolute; inset: 0 0 auto 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.bubbles { position: absolute;bottom: 0; left: 0; width: 100%; height: 25%; pointer-events: none; z-index: 3; }
 .bubble { position: absolute; bottom: -100px; width: 20px; height: 20px; background: rgba(255, 255, 255, 0.15); border-radius: 50%; animation: rise 25s infinite ease-in; }
-@keyframes rise { from { transform: translateY(0) scale(1); opacity: 1; } 50% { opacity: 0.8; } to { transform: translateY(-110vh) scale(0.5); opacity: 0; } }
+@keyframes rise { from { transform: translateY(0) scale(1); opacity: 1; } 50% { opacity: 0.8; } to { transform: translateY(-35vh) scale(0.5); opacity: 0; } }
 .bubble:nth-child(1){left:10%;animation-duration:22s;animation-delay:0s;} 
 .bubble:nth-child(2){left:20%;animation-duration:18s;animation-delay:-5s;width:25px;height:25px} 
 .bubble:nth-child(3){left:35%;animation-duration:28s;animation-delay:-2s} 
@@ -709,4 +709,5 @@ input:checked + .slider:before { transform: translateX(22px); }
     .cookie-buttons.settings-buttons { margin-top: 25px; }
 
 }
+
 
