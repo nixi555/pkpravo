@@ -195,7 +195,7 @@ table thead,.treneri-table thead {
   max-width:800px;
   margin:40px auto;
   border-collapse:collapse;
-  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  box-shadow:none;
   overflow:hidden;
   border-radius:8px;
 }
@@ -707,4 +707,5 @@ input:checked + .slider:before { transform: translateX(22px); }
     }
     .cookie-option .switch { align-self: flex-end; }
     .cookie-buttons.settings-buttons { margin-top: 25px; }
+
 }
