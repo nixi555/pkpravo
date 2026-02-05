@@ -16,8 +16,6 @@ Zahvaljujemo svima koji su nam to omogućili i izašli nam u susret 💙
 
 Od 2.2. vraćamo se u hotel Diamant, koji je trenutno zatvoren.
 
-
+![](/assets/images/uploads/screenshot-2026-02-05-at-22.53.49.png)
 
 ![](/assets/images/uploads/screenshot-2026-02-05-at-22.53.41.png)
-
-![](/assets/images/uploads/screenshot-2026-02-05-at-22.53.49.png)
